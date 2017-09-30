@@ -27,15 +27,6 @@ angular.module('Authentication')
     }).error(function (data, status, headers, config) {
         console.log(data);
     });
-
-
-            /* Use this for real authentication
-             ----------------------------------------------*/
-            //$http.post('/api/authenticate', { username: username, password: password })
-            //    .success(function (response) {
-            //        callback(response);
-            //    });
-
         };
  
         service.SetCredentials = function (employee) {
@@ -61,9 +52,9 @@ angular.module('Authentication')
           var employeeId =  $rootScope.globals.currentUser.employee.employeeId;
             console.log(employeeId);
             $http({
-                url:"/prodcast/support/myTickets",
-                method:"GET",
-                params:{employeeId: employeeId}
+                url:"/prodcast/support/myTickets?employeeId="+employeeId,
+                method:"GET"
+                
             }).success(function (data, status, headers, config){
                 callback(data);
             }).error(function(data, status, headers, config){
@@ -85,6 +76,54 @@ angular.module('Authentication')
             });
             
         };
+           service.assignRequest = function (employeeId, issueId, callback) {
+          
+            var formDataLogin= $.param({
+                "employeeId": employeeId,
+                "issueId": issueId
+					});
+            $http({
+                url:"/prodcast/support/assignRequest",
+                method:"POST",
+                data: formDataLogin,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    
+            }).success(function (data, status, headers, config){
+                callback(data);
+            }).error(function(data, status, headers, config){
+                console.log(data);
+            });
+            
+        };
+        service.getIssue = function (issueId, callback) {
+            
+            $http({
+                url:"/prodcast/support/issueDetails?issueId="+issueId,
+                method:"GET"
+            }).success(function(data, status, headers, config){
+                callback(data);
+            }).error(function(data, status, headers, config){
+                console.log(data);
+            });
+        };
+        service.reassignTicket = function(employeeId, issueId, callback){
+            
+            var formDataLogin=$.param({
+                "employeeId":employeeId,
+                "issueId":issueId
+            });
+            $http({
+                url:"/prodcast/support/reassignTicket",
+                method:"POST",
+                data: formDataLogin,
+                headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(data, status, headers, config){
+                callback(data);
+            }).error(function(data, status, headers, config){
+                console.log(data);
+            });
+        };
+        
  
         return service;
     }])

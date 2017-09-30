@@ -2,7 +2,8 @@
 <p>You're logged in!!</p>
 <p><a href="#/login">Logout</a></a></p>
 <p><a href='#/newIssues'>New Issues</a></p>
-<p>My Issues (<div ng-controller="HomeController">{{countMyIssues}}</div>)</p>
+<button type="button" style="float: right;" ng-click="viewNew()">View New Tickets</button>
+<p>My Issues : <div ng-controller="HomeController">{{countMyIssues}}</div></p>
  <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -10,17 +11,20 @@
                                         <th>Issue Id</th>
                                         <th>Phone Number</th>
                                         <th>Issue</th>
+                                        <th>Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr ng-repeat="issueDetail in issueDetails">
+                                    <tr ng-repeat="myIssue in myIssues">
                                        
+                                        <td ng-click="goToTicket(myIssue.issueId)">
+                                            <input type="text" class="form-control" ng-model="myIssue.issueId" required/></td>
                                         <td>
-                                            <input type="text" class="form-control" ng-model="issueDetail.issueId" required/></td>
+                                            <input type="text" class="form-control" ng-model="myIssue.phoneNumber" required/></td>
                                         <td>
-                                            <input type="text" class="form-control" ng-model="issueDetail.phoneNumber" required/></td>
+                                            <input type="text" class="form-control" ng-model="myIssue.issue" required/></td>
                                         <td>
-                                            <input type="text" class="form-control" ng-model="issueDetail.issue" required/></td>
+                                        <input type="text" class="form-control" ng-model="myIssue.status" requtred/></td>
                                     </tr>
                                 </tbody>
                             </table>

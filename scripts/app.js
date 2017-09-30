@@ -3,10 +3,13 @@
 // declare modules
 angular.module('Authentication', []);
 angular.module('Home', []);
+angular.module('Issue', []);
+angular.module('NewTicket', []);
 
 angular.module('BasicHttpAuthExample', [
     'Authentication',
-    'Home',
+    'Home','Issue',
+    'NewTicket',
     'ngRoute',
     'ngCookies'
 ])
@@ -24,6 +27,15 @@ angular.module('BasicHttpAuthExample', [
             controller: 'HomeController',
             templateUrl: 'modules/home/views/home.html'
         })
+        .when('/issue', {
+            controller:'IssueController',
+            templateUrl: 'modules/issues/views/issues.html'
+        })
+        .when('/newTicket',{
+            controller: 'NewTicketController',
+            templateUrl: 'modules/newTicket/views/newTicket.html'
+    })
+   
  
         .otherwise({ redirectTo: '/login' });
 }])

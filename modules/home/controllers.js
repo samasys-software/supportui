@@ -5,13 +5,21 @@ angular.module('Home')
 .controller('HomeController',
     ['$scope', '$rootScope', '$location', 'AuthenticationService',
     function ($scope, $rootScope, $location, AuthenticationService) {
-       
-        AuthenticationService.newIssues(function(data){
-            $scope.countMyIssues= data.serviceSupport.length ;
-            $scope.issueDetails=data.serviceSupport;
-            console.log( data.serviceSupport.length);
-            console.log(data);
-        });
+    
+           AuthenticationService.MyIssues( function(data){
+                $scope.myIssues = data.serviceSupport;
+               console.log(data.serviceSupport.length);
+                console.log(data);
+            });
+          $scope.goToTicket = function(issueId){
+              
+                $rootScope.issueId = issueId;
+                $location.path('/issue');
+                
+            }
+          $scope.viewNew = function(){
+              $location.path('/newTicket');
+          }
         
       
     }]);

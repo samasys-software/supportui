@@ -1,1 +1,33 @@
-<h1>Issues</h1>
+<div ng-controller='IssueController'>
+    <button type="button" ng-click="viewMyTicket()">My Ticket</button>
+    <button type="button" ng-click="viewAllTicket()">View Ticket</button>
+    <div class="assignbutton" ng-hide="issue.status!='0'">
+     <button type="button" ng-click="assignToMe()" style="float: right;"  >Assign To Me</button>
+    </div>
+   
+    <h1><b>Issue Details </b></h1>
+    
+    <p>Issue Id : {{issue.issueId}}</p>
+    <p>PhoneNumber : {{issue.phoneNumber}}</p>
+    
+    <p>Issue :</p>
+    <p>{{issue.issue}}</p>
+    <p>Comments :</p>
+    <p>{{issue.comments}}</p>
+
+    
+ 
+    <p>Add Comments :</p>
+    <p><textarea class="textarea" type="text" id="myText" rows="5" cols="50" ng-model="newMessage" placeholder="Additional Comments"></textarea></p>
+    <div>
+    <button type="submit" ng-click="">Save</button>
+    </div>
+    <select id="selectedStatus" ng-click="getSelectedStatus()">
+         <option value="1">Assigned</option>
+         <option value="2" >Resolved</option>
+         <option value="3">Closed</option>
+
+    </select>
+   
+    <button ng-click="comments()">comment</button>
+</div>
