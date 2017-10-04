@@ -1,0 +1,38 @@
+
+<div class="jumbotron container-fluid"><h1><b>NewTickets</b></h1></div>
+<div class ="row">
+<div class="col-xs-2">
+</div>
+<div class="col-xs-4">
+<button class="btn btn-success button" type="button" ng-click="myIssue()">My Issue</button>
+</div>
+<div class="col-xs-2">
+</div>
+<div class="xs-4">
+<button class="btn btn-danger button2" type="button" ng-click="logout()">Logout</button>
+</div>
+</div>
+<div>&nbsp;</div>
+<table class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                       
+                                        <th>Issue Id</th>
+                                        <th>Phone Number</th>
+                                        <th>Issue</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="issueDetail in issueDetails">
+                                       
+                                        <td ng-click="goToIssue(issueDetail.issueId)">
+                                            <div margin:"auto;">{{issueDetail.issueId}}</div></td>
+                                        <td>
+                                            <div>{{issueDetail.phoneNumber}}</div></td>
+                                        <td>
+                                            <div>{{issueDetail.issue}}</div></td>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
