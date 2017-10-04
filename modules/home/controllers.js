@@ -20,6 +20,9 @@ angular.module('Home')
           $scope.viewNew = function(){
               $location.path('/newTicket');
           }
+          $scope.logout = function(){
+              $location.path('/login');
+          }
         
       
     }]);

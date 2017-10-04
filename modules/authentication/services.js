@@ -123,7 +123,34 @@ angular.module('Authentication')
                 console.log(data);
             });
         };
-        
+        service.updateIssue = function(employeeId, issueId, status, comments, callback){
+             var formDataLogin=$.param({
+                "employeeId":employeeId,
+                "issueId":issueId,
+                 "status":status,
+                 "comments":comments
+            });
+            $http({
+                url:"/prodcast/support/updateTicket",
+                method:"POST",
+                data: formDataLogin,
+                headers:{'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(data, status, headers, config){
+                callback(data);
+            }).error(function(data, status, headers, config){
+                console.log(data);
+            });
+        }
+        service.supportReport = function(employeeId, startDate, endDate, type, selectedEmployee, callback){
+            $http({
+                url:"/prodcast/support/supportReport?employeeId="+employeeId+"&startDate="+startDate+"&endDate="+endDate+"&type="+type+"&selectedEmployee="+selectedEmployee,
+                method:"GET"
+            }).success(function(data, status, headers, config){
+                callback(data);
+            }).error(function(data, status, headers, config){
+                console.log(data);
+            });
+        }
  
         return service;
     }])

@@ -11,7 +11,8 @@ angular.module('BasicHttpAuthExample', [
     'Home','Issue',
     'NewTicket',
     'ngRoute',
-    'ngCookies'
+    'ngCookies',
+    'ngSanitize'
 ])
  
 .config(['$routeProvider', function ($routeProvider) {

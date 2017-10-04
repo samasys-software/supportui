@@ -1,33 +1,44 @@
-<div ng-controller='IssueController'>
-    <button type="button" ng-click="viewMyTicket()">My Ticket</button>
-    <button type="button" ng-click="viewAllTicket()">View Ticket</button>
-    <div class="assignbutton" ng-hide="issue.status!='0'">
-     <button type="button" ng-click="assignToMe()" style="float: right;"  >Assign To Me</button>
-    </div>
-   
-    <h1><b>Issue Details </b></h1>
-    
-    <p>Issue Id : {{issue.issueId}}</p>
-    <p>PhoneNumber : {{issue.phoneNumber}}</p>
-    
-    <p>Issue :</p>
-    <p>{{issue.issue}}</p>
-    <p>Comments :</p>
-    <p>{{issue.comments}}</p>
 
+<div ng-controller='IssueController'>
+</div>
+<div class="jumbotron container-fluid" style="text-align: center"><h1><b>Issue Details </b></h1>
+</div> 
+<div class="row">
+    <div class="col-xs-1"></div>
+<div class="col-xs-3">
+    <botton class="btn btn-danger button2" type="button" ng-click="logout()">Logout</botton>
+</div>
+<div class="col-xs-4" >
+     <button class="btn btn-success button2" type="button" ng-click="assignToMe()" ng-show="issue.status=='0'">Assign To Me</button>
+</div>
+   
+<div class="col-xs-4">
+      <button class="btn btn-success button2" type="button" ng-click="viewMyTicket()">My Ticket</button>
+</div>
+</div>
+<div>&nbsp;</div>
+<p>Issue Id    : {{issue.issueId}}</p>
+<p>PhoneNumber : {{issue.phoneNumber}}</p>
     
- 
-    <p>Add Comments :</p>
-    <p><textarea class="textarea" type="text" id="myText" rows="5" cols="50" ng-model="newMessage" placeholder="Additional Comments"></textarea></p>
-    <div>
-    <button type="submit" ng-click="">Save</button>
-    </div>
-    <select id="selectedStatus" ng-click="getSelectedStatus()">
+<p>Issue :</p>
+<td><div  class="well">{{issue.issue}}</div></td>
+<p>Comments :</p>
+<td><div class="well" ng-bind-html="issue.comments"></div></td>
+<p>Add Comments :</p>
+<p><textarea class="textarea" type="text" id="myText" rows="5" cols="50" ng-model="newMessage" placeholder="Additional Comments"></textarea></p>
+<div class="row">
+<div class="col-xs-1"></div>
+<div class="col-xs-4">
+     <select class="form-control"  id="selectedStatus" ng-click="getSelectedStatus()" ng-show="issue.status !=0">
          <option value="1">Assigned</option>
          <option value="2" >Resolved</option>
          <option value="3">Closed</option>
-
     </select>
-   
-    <button ng-click="comments()">comment</button>
 </div>
+<div class="col-xs-3"></div>
+<div class="col-xs-4">
+    <button type="submit" class="btn btn-danger button2" ng-click="saveIssue()" ng-show="issue.status !=0">Save</button>
+</div>
+</div>
+ 
+

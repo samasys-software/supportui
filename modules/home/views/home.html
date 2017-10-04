@@ -1,30 +1,38 @@
-<h1>Home</h1>
-<p>You're logged in!!</p>
-<p><a href="#/login">Logout</a></a></p>
-<p><a href='#/newIssues'>New Issues</a></p>
-<button type="button" style="float: right;" ng-click="viewNew()">View New Tickets</button>
-<p>My Issues : <div ng-controller="HomeController">{{countMyIssues}}</div></p>
- <table class="table table-striped table-bordered">
+ 
+<div class="jumbotron  container-fluid">
+    <h1 style="text-align: center"><b>My Issues</b></h1></div>
+<div class="row">
+<div class="col-xs-3"></div>
+<div class="col-xs-3">
+    <button class="btn btn-danger button2" ng-click="logout()">Logout</button>
+</div>
+<div class="col-xs-3">
+    <button class="btn btn-success button2" type="button" ng-click="viewNew()">New Tickets</button> 
+</div>
+</div>
+ <div ng-controller="HomeController">&nbsp;</div>
+<br />
+    
+    <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                        
-                                        <th>Issue Id</th>
-                                        <th>Phone Number</th>
-                                        <th>Issue</th>
-                                        <th>Status</th>
+                                        <th style="text-align: center" margin:"auto";>Issue Id</th>
+                                        <th style="text-align: center" margin:"auto";>Phone Number</th>
+                                        <th style="text-align: center" margin:"auto";>Issue</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="myIssue in myIssues">
                                        
                                         <td ng-click="goToTicket(myIssue.issueId)">
-                                            <input type="text" class="form-control" ng-model="myIssue.issueId" required/></td>
+                                            <div style="text-align: center" margin: "auto";>{{myIssue.issueId}}</div></td>
                                         <td>
-                                            <input type="text" class="form-control" ng-model="myIssue.phoneNumber" required/></td>
+                                            <div>{{myIssue.phoneNumber}}</div></td>
                                         <td>
-                                            <input type="text" class="form-control" ng-model="myIssue.issue" required/></td>
-                                        <td>
-                                        <input type="text" class="form-control" ng-model="myIssue.status" requtred/></td>
+                                            <div>{{myIssue.issue}}</div></td>
+                                        
                                     </tr>
                                 </tbody>
                             </table>
