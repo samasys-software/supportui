@@ -7,25 +7,51 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
-  </head>
-    <style>
+       
+   <style>
 .button2:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
+.affix {
+        
+      top: 0;
+      width: 100%;
+    position: fixed;
+  }
+
+
 </style>
+    </head>
+   
 
   <body>
-  
-    
+            
+            <nav class="navbar navbar-inverse" data-spy="affix" style="position: fixed; width: 100%; top: 0;">
+               <div class="container-fluid"> 
+      
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/">Home</a></li>
+                        <li><a href="#/newTicket">New Ticket</a></li>
+                        <li><a href="#/report">Report</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#/login"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                    </ul>
+                
+                       
+         </div>       
+      </nav>
+                
+      <div ng-view ></div>
         
       
-          <div ng-view></div>
+          
         
    
 
 
-
-    <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//code.angularjs.org/1.2.20/angular.js"></script>
     <script src="//code.angularjs.org/1.2.20/angular-route.js"></script>
     <script src="//code.angularjs.org/1.2.13/angular-cookies.js"></script>
@@ -36,6 +62,7 @@
     <script src="modules/home/controllers.js"></script>
       <script src="modules/issues/controllers.js"></script>
       <script src="modules/newTicket/controllers.js"></script>
+      <script src="modules/report/controller.js"></script>
       
   </body>
 

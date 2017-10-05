@@ -16,6 +16,7 @@ angular.module('NewTicket')
             console.log(data);
           
         });
+            $scope.issueDetailLimit=10;
           $scope.goToIssue = function(issueId){
               
                 $rootScope.issueId = issueId;

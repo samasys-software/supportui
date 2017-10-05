@@ -5,11 +5,12 @@ angular.module('Authentication', []);
 angular.module('Home', []);
 angular.module('Issue', []);
 angular.module('NewTicket', []);
+angular.module('Report',[]);
 
 angular.module('BasicHttpAuthExample', [
     'Authentication',
     'Home','Issue',
-    'NewTicket',
+    'NewTicket','Report',
     'ngRoute',
     'ngCookies',
     'ngSanitize'
@@ -35,6 +36,10 @@ angular.module('BasicHttpAuthExample', [
         .when('/newTicket',{
             controller: 'NewTicketController',
             templateUrl: 'modules/newTicket/views/newTicket.html'
+    })
+    .when('/report',{
+        controller:'ReportController',
+        templateUrl:'modules/report/views/report.html'
     })
    
  
