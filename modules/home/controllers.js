@@ -11,6 +11,7 @@ angular.module('Home')
                console.log(data.serviceSupport.length);
                 console.log(data);
             });
+        $scope.issueLimit=10;
           $scope.goToTicket = function(issueId){
               
                 $rootScope.issueId = issueId;
@@ -22,6 +23,9 @@ angular.module('Home')
           }
           $scope.logout = function(){
               $location.path('/login');
+          }
+          $scope.viewReport = function(){
+              $location.path('/report');
           }
         
       

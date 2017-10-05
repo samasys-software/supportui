@@ -1,5 +1,5 @@
 <div class="jumbotron  container-fluid">
-    <h1 style="text-align: center"><b>My Issues</b></h1></div>
+    <h1 style="text-align: center"><b>My Tickets</b></h1></div>
 <div class="row">
 <div class="col-xs-1"></div>
 <div class="col-xs-3">
@@ -35,7 +35,7 @@
                                         <td>
                                             <div>{{myIssue.phoneNumber}}</div></td>
                                         <td>
-                                            <div>{{myIssue.issue}}</div></td>
+                                            <div>{{myIssue.issue |limitTo: issueLimit}}...</div></td>
                                         
                                     </tr>
                                 </tbody>
