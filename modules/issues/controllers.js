@@ -27,13 +27,7 @@ angular.module('Issue')
                 }
             });
         }
-       $scope.viewMyTicket = function(){
-            $location.path('/');
-       }
-        
-          $scope.logout= function(){
-              $location.path('/login');
-          }
+      
       $scope.assignToSomeone = function(){
           $scope.employeeId = $rootScope.globals.currentUser.employee.employeeId;
           AuthenticationService.reassignTicket($scope.employeeId,$rootScope.issueId,function(data){
