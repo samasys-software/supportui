@@ -21,19 +21,24 @@
 </div>
 </div>
 <div>&nbsp;</div>
+<style>
+    $('.datepicker').datepicker({
+    format: 'dd/mm/yyyy'
+ });
+</style>
 
 <div ng-if="type == '4'">
 <div class="row">
 <div class="col-xs-1"></div>
 <div class="col-xs-3">
     <h5>Start Date</h5>
-    <input type="date" placeholder="yyyy-MM-dd" ng-model="startDate" id="startdate" required/>
+    <input type="date" style="datepicker" placeholder="yyyy-MM-dd" ng-model="startDate" id="startdate" required/>
     </div>
     <div class="col-xs-1"></div>
    
     <div class="col-xs-3">
           <h5>End Date</h5>
-    <input type="date" placeholder="yyyy-MM-dd" ng-model="endDate" id="endDate" required/>
+    <input type="date" style="datepicker" placeholder="yyyy-MM-dd" ng-model="endDate" id="endDate" required/>
     </div>
     <div class="col-xs-1"></div>
 
@@ -66,18 +71,18 @@
                                             <div style="text-align: center" margin: "auto";>{{myReport.issueId}}</div></td>
                                         
                                         <td>
-                                            <div>{{myReport.issue}}</div></td>
+                                            <div>{{myReport.phoneNumber}}</div></td>
                                         <td>
                                             <div>{{myReport.issue}}</div></td>
                                         <td>
-                                            <div>{{myReport.status}}</div></td>
+                                            <div>{{myReport.status | statusDescription}}</div></td>
                                         
                                         <td>
                                             <div>{{myReport.startDate}}</div></td>
                                         <td>
                                             <div>{{myReport.endDate}}</div></td>
                                         <td>
-                                            <div>{{myReport.firstname}}</div></td>
+                                            <div>{{myReport.assignedTo}}</div></td>
                                         
                                     </tr>
                                 </tbody>
