@@ -21,18 +21,18 @@
 </div>
 </div>
 <div>&nbsp;</div>
-<style>
-    $('.datepicker').datepicker({
-    format: 'dd/mm/yyyy'
- });
-</style>
+
+<div>&nbsp;</div>
+
 
 <div ng-if="type == '4'">
 <div class="row">
 <div class="col-xs-1"></div>
 <div class="col-xs-3">
     <h5>Start Date</h5>
+
     <input type="date" style="datepicker" placeholder="yyyy-MM-dd" ng-model="startDate" id="startdate" required/>
+
     </div>
     <div class="col-xs-1"></div>
    
@@ -46,6 +46,7 @@
 </div>
 </div>
 <div>&nbsp;</div>
+<h1>{{startDateInput}}</h1>
  
     <table class="table table-striped table-bordered">
                                 <thead>
@@ -70,19 +71,29 @@
                                         <td ng-click="goToTicket(myReport.issueId)">
                                             <div style="text-align: center" margin: "auto";>{{myReport.issueId}}</div></td>
                                         
+                                        
                                         <td>
-                                            <div>{{myReport.phoneNumber}}</div></td>
+
+                                            <div>{{myReport.isdCode}}-{{myReport.phoneNumber}}</div></td>
                                         <td>
                                             <div>{{myReport.issue}}</div></td>
+                                     
+
+                                 
                                         <td>
                                             <div>{{myReport.status | statusDescription}}</div></td>
+
                                         
                                         <td>
                                             <div>{{myReport.startDate}}</div></td>
                                         <td>
                                             <div>{{myReport.endDate}}</div></td>
                                         <td>
-                                            <div>{{myReport.assignedTo}}</div></td>
+
+                                            <div>{{myReport.firstName+" "}}{{myReport.lastName}}</div></td>
+
+                                            
+
                                         
                                     </tr>
                                 </tbody>

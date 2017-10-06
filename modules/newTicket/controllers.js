@@ -23,12 +23,7 @@ angular.module('NewTicket')
                 $location.path('/issue');
                 
             }
-          $scope.myIssue= function(){
-              $location.path('/');
-          }
-          $scope.logout= function(){
-              $location.path('/login');
-          }
+         
         
         
       

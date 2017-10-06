@@ -18,15 +18,7 @@ angular.module('Home')
                 $location.path('/issue');
                 
             }
-          $scope.viewNew = function(){
-              $location.path('/newTicket');
-          }
-          $scope.logout = function(){
-              $location.path('/login');
-          }
-          $scope.viewReport = function(){
-              $location.path('/report');
-          }
+          
         
       
     }]);
