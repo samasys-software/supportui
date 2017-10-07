@@ -19,7 +19,9 @@
 
 </div>
 <div>&nbsp;</div>
+
 <div>&nbsp;</div>
+
 
 <div ng-if="type == '4'">
 <div class="row">
@@ -27,14 +29,18 @@
 <div class="col-xs-1"></div>
 <div class="col-xs-3 form-group" >
     <h5>Start Date</h5>
+
     <input type="date" data-date-format='dd/MM/yyyy' placeholder="dd-MM-yyyy" ng-model="issue.startdate"   required/>
     
+
     </div>
     <div class="col-xs-1"></div>
    
     <div class="col-xs-3 form-group">
           <h5>End Date</h5>
+
     <input type="date" data-date-format='dd/MM/yyyy' placeholder="dd-MM-yyyy" ng-model="issue.enddate"    required/>
+
     </div>
     <div class="col-xs-1"></div>
     <div class="col-xs-3 form-group">
@@ -72,18 +78,27 @@
                                         
                                         
                                         <td>
+
                                             <div>{{myReport.isdCode}}-{{myReport.phoneNumber}}</div></td>
                                         <td>
                                             <div>{{myReport.issue}}</div></td>
+                                     
+
+                                 
                                         <td>
-                                            <div>{{myReport.status | status}}</div></td>
+                                            <div>{{myReport.status | statusDescription}}</div></td>
+
                                         
                                         <td>
                                             <div>{{myReport.startDate}}</div></td>
                                         <td>
                                             <div>{{myReport.endDate}}</div></td>
                                         <td>
+
                                             <div>{{myReport.firstName+" "}}{{myReport.lastName}}</div></td>
+
+                                            
+
                                         
                                     </tr>
                                 </tbody>

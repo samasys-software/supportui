@@ -1,6 +1,8 @@
 angular.module('Report')
-.filter("status", function(){
-    return function (status){
+
+.filter("statusDescription", function(){
+    return function(status){
+
         switch (status){
             case 0:
                 return "Unassigned";
@@ -10,6 +12,7 @@ angular.module('Report')
                 return "Resolved";
             case 3:
                 return "Closed";
+
         }
     }
 })
@@ -18,16 +21,17 @@ angular.module('Report')
         return phoneNumber+isdCode;
     }
 })
-.filter("customDate",function(){
-    return 
-})
+
+
+                
+
+
+
 .controller('ReportController',
            ['$scope','$rootScope','$location','AuthenticationService',
            function($scope,$rootScope,$location,AuthenticationService){
                var employeeId=$rootScope.globals.currentUser.employee.employeeId;
-               console.log($scope.start_Date);
-                   console.log($scope.end_Date);
-              $scope.getSelectedType=function(){
+  $scope.getSelectedType=function(){
                $scope.type=document.getElementById("selectedType").value;
                   AuthenticationService.supportReport('null',$scope.startDate,$scope.endDate,document.getElementById("selectedType").value,'ALL',function(data){
                       $scope.myReports=data.serviceSupport;
