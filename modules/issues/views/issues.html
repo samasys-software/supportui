@@ -1,16 +1,32 @@
-
+  
 <div ng-controller='IssueController'>
+    
 </div>
 <div class="jumbotron container-fluid" style="text-align: center"><h1><b>Issue Details </b></h1>
-</div> 
+</div>
+<div class="alert alert-danger alert-dismissable" ng-show="issueFailure == true">
+    <a href='#' class="close" data-dismiss="alert" aria-label="close">×</a>
+    <strong>ERROR!</strong>
+    <p>{{issueError}}</p>
+</div>
+
 <div class="row">
     <div class="col-xs-8"></div>
 
 <div class="col-xs-4" >
-     <button class="btn btn-success button2" type="button" ng-click="assignToMe()" ng-show="issue.status=='0'">Assign To Me</button>
+     <button class="btn btn-success button2" type="button" ng-click="assignToMe()" ng-show="issue.status=='0'" ng-disabled="success == false" >Assign To Me</button>
 </div>
-   
-
+</div>
+<div>&nbsp;</div>
+<div class="alert alert-danger alert-dismissable" ng-show="failure == true">
+    <a class="close" data-dismiss="alert" aria-label="close">×</a>
+    <strong>ERROR!</strong>
+    <p>{{error}}</p>
+</div>
+<div class="alert alert-success alert-dismissable" ng-show="success == false">
+    <a class="close" data-dismiss="alert" aria-label="close">×</a>
+    <strong>Success!</strong>
+    <p>Ticket is Assigned!!</p>
 </div>
 <div>&nbsp;</div>
 <p>Issue Id    : {{issue.issueId}}</p>
@@ -26,15 +42,26 @@
 <div class="col-xs-1"></div>
 <div class="col-xs-4">
      <select class="form-control"  id="selectedStatus" ng-click="getSelectedStatus()" ng-show="issue.status !=0">
-         <option value="1">Assigned</option>
+         <option value="1" ng-disabled="issue.status == 1">Assigned</option>
          <option value="2" >Resolved</option>
          <option value="3">Closed</option>
     </select>
 </div>
 <div class="col-xs-3"></div>
 <div class="col-xs-4">
-    <button type="submit" class="btn btn-danger button2" ng-click="saveIssue()" ng-show="issue.status !=0">Save</button>
+    <button type="submit" class="btn btn-danger button2" ng-click="saveIssue()" ng-show="issue.status !=0" ng-disabled="saveSuccess == false">Save</button>
 </div>
+    </div>
+<div class="alert alert-danger alert-dismissable" ng-show="saveFailure == true">
+    <a href='#/issue' class="close" data-dismiss="alert" aria-label="close">×</a>
+    <strong>ERROR!</strong>
+    <p>{{saveError}}</p>
 </div>
+<div class="alert alert-success alert-dismissable" ng-show="saveSuccess == false">
+    <a href='#' class="close" data-dismiss="alert" aria-label="close">×</a>
+    <strong>Success!</strong>
+    <p>Issue Updated!!</p>
+</div>
+
  
 

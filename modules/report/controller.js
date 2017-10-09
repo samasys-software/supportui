@@ -34,7 +34,15 @@ angular.module('Report')
   $scope.getSelectedType=function(){
                $scope.type=document.getElementById("selectedType").value;
                   AuthenticationService.supportReport('null',$scope.startDate,$scope.endDate,document.getElementById("selectedType").value,'ALL',function(data){
-                      $scope.myReports=data.serviceSupport;
+                      if(!data.error){
+                   $scope.myReports=data.serviceSupport;
+                   
+                   console.log(data);
+                       }
+                       else{
+                           $scope.reportFailure= data.error;
+                           $scope.reportError = data.errorMessage;
+                       }
                        });
                console.log($scope.type);
                   };  
@@ -43,25 +51,17 @@ angular.module('Report')
                $scope.getReport=function(){
                    console.log($scope.issue.startdate);
                    console.log($scope.issue.enddate);
-                   $scope.checkErr = function(startDate,endDate){
-    $scope.errMessage = '';
-    $scope.curDate = new Date();
-
-    if(startDate < endDate){
-      $scope.errMessage = 'End Date should be greate than start date';
-      return false;
-    }
-    if(startDate < curDate){
-       $scope.errMessage = 'Start date should not be before today.';
-       return false;
-    }
-
-  };
+          
                    AuthenticationService.supportReport('null',$scope.issue.startdate,$scope.issue.enddate,document.getElementById("selectedType").value,'ALL',function(data){
+                       if(!data.error){
                    $scope.myReports=data.serviceSupport;
                    
                    console.log(data);
-                   
+                       }
+                       else{
+                           $scope.reportFailure= data.error;
+                           $scope.reportError = data.errorMessage;
+                       }
                });
                }                
                
@@ -69,9 +69,15 @@ angular.module('Report')
              
                
              AuthenticationService.supportReport('null',$scope.startDate,$scope.endDate,document.getElementById("selectedType").value,'ALL',function(data){
+                   if(!data.error){
                    $scope.myReports=data.serviceSupport;
                    
                    console.log(data);
+                       }
+                       else{
+                           $scope.reportFailure= data.error;
+                           $scope.reportError = data.errorMessage;
+                       }
                    
                });
                    

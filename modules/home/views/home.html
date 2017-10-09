@@ -1,7 +1,11 @@
 <div class="jumbotron  container-fluid">
     <h1 style="text-align: center"><b>My Tickets</b></h1></div>
 
-
+<div class="alert alert-danger alert-dismissable" ng-show="myIssueFailure == true">
+    <a href='#/issue' class="close" data-dismiss="alert" aria-label="close">×</a>
+    <strong>ERROR!</strong>
+    <p>{{myIssueError}}</p>
+</div>
  <div ng-controller="HomeController">&nbsp;</div>
 <br />
     
@@ -19,7 +23,7 @@
                                     <tr ng-repeat="myIssue in myIssues">
                                        
                                         <td ng-click="goToTicket(myIssue.issueId)">
-                                            <div style="text-align: center" margin: "auto";>{{myIssue.issueId}}</div></td>
+                                            <div style="text-align: center" margin: "auto";><span class = "glyphicon glyphicon-ok" ng-show="myIssue.status == 2"></span>{{myIssue.issueId}}</div></td>
                                         <td>
                                             <div>{{myIssue.phoneNumber}}</div></td>
                                         <td>

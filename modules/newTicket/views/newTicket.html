@@ -2,7 +2,11 @@
 <div class="jumbotron container-fluid" style="text-align: center">
     <h1><b>New Tickets</b></h1>
 </div>
-
+<div class="alert alert-danger alert-dismissable" ng-show="newTicketFailure == true">
+    <a href='#/issue' class="close" data-dismiss="alert" aria-label="close">×</a>
+    <strong>ERROR!</strong>
+    <p>{{newTicketError}}</p>
+</div>
 <div>&nbsp;</div>
 
 

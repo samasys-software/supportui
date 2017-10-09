@@ -8,11 +8,15 @@ angular.module('Issue')
       
        
         AuthenticationService.getIssue($rootScope.issueId,function(data){
+            if(!data.error){
             var issue = data.serviceSupport["0"];
             $scope.issue = issue ;
-            
             console.log( data);
-            
+            }
+            else{
+                $scope.issueFailure = data.error;
+                $scope.issueError= data.errorMessage;
+            }
             
         });
        
@@ -20,8 +24,11 @@ angular.module('Issue')
             $scope.employeeId = $rootScope.globals.currentUser.employee.employeeId;
             AuthenticationService.assignRequest($scope.employeeId, $rootScope.issueId, function(data){
                  if(!data.error) {
-                    console.log(data);
+                    console.log(data.error);
+                    $scope.success = data.error;
                 } else {
+                    
+                     $scope.failure = data.error;
                     $scope.error = data.errorMessage;
                     $scope.dataLoading = false;
                 }
@@ -42,16 +49,24 @@ angular.module('Issue')
           AuthenticationService.updateIssue($scope.employeeId, $rootScope.issueId, document.getElementById("selectedStatus").value, $scope.newComment, function(data){
               
                if(!data.error) {
+                   $scope.saveSuccess = data.error;
                     console.log(data);
                    AuthenticationService.getIssue($rootScope.issueId, function(data){
-                    var issue = data.serviceSupport["0"];
-                    
-                    $scope.issue = issue ;
+                   if(!data.error){
+                       var issue = data.serviceSupport["0"];
+                   $scope.issue = issue ;
+            console.log( data);
+            }
+            else{
+                $scope.issueFailure = data.error;
+                $scope.issueError= data.errorMessage;
+            }
 
               });
 
                 } else {
-                    $scope.error = data.errorMessage;
+                    $scope.saveFailure = data.error;
+                    $scope.SaveError = data.errorMessage;
                     $scope.dataLoading = false;
                 } 
      

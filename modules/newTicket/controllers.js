@@ -9,11 +9,17 @@ angular.module('NewTicket')
         
             
         AuthenticationService.newIssues(function(data){
+            if(!data.error){
             $scope.countMyIssues= data.serviceSupport.length ;
             $scope.issueDetails=data.serviceSupport;
             $scope.totalIssueDetails = data.serviceSupport.length;
             console.log( data.serviceSupport.length);
             console.log(data);
+            }
+            else{
+                $scope.newTicketFailure=data.error;
+                $scope.newTicketError = data.errorMessage;
+            }
           
         });
             $scope.issueDetailLimit=10;
