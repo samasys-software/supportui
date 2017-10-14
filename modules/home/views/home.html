@@ -2,13 +2,13 @@
     <h1 style="text-align: center"><b>My Tickets</b></h1></div>
 
 <div class="alert alert-danger alert-dismissable" ng-show="myIssueFailure == true">
-    <a href='#/issue' class="close" data-dismiss="alert" aria-label="close">×</a>
+    <a class="close" data-dismiss="alert" aria-label="close">×</a>
     <strong>ERROR!</strong>
     <p>{{myIssueError}}</p>
 </div>
  <div ng-controller="HomeController">&nbsp;</div>
 <br />
-    
+    <div class="container">
     <table class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
@@ -32,3 +32,4 @@
                                     </tr>
                                 </tbody>
                             </table>
+</div>

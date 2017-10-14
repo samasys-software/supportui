@@ -1,13 +1,15 @@
 
 <form name="form" ng-submit="report()" role="form" method="get">
-<div class="jumbotron container-fluid" ng-controller="ReportController">
+    
+<div class="jumbotron container-fluid"  ng-controller="ReportController">
 <h1 style="text-align: center"><b>Reports</b></h1>
 </div>
+        
 <div class="row">
 <div class="col-xs-1"></div>
-<div class="col-xs-3">
+<div class="col-xs-5">
     <h5>Select Report Date</h5>
-<select class="form-controll" id="selectedType" ng-click="getSelectedType()">
+<select ng-model="model" class="form-controll" id="selectedType" ng-change="getSelectedType(model)">
     <option value="0">Today</option>
     <option value="1">Yesterday</option>
     <option value="2">Week(Since Monday)</option>
@@ -44,17 +46,18 @@
     </div>
     <div class="col-xs-1"></div>
     <div class="col-xs-3 form-group">
+        <h1></h1>
 <button class="btn btn-success button2" type="button" ng-click="getReport()">Go</button>    
 </div>
 
 
 </div>
 </div>
-    <div class="alert alert-danger alert-dismissable" ng-show="reportFailure == true">
-    <a href='#/issue' class="close" data-dismiss="alert" aria-label="close">×</a>
+    <!--<div class="alert alert-danger alert-dismissable" ng-show="reportFailure == true">
+    <a class="close" data-dismiss="alert" aria-label="close">×</a>
     <strong>ERROR!</strong>
     <p>{{reportError}}</p>
-</div>
+</div>-->
 <div>&nbsp;</div>
 
  
