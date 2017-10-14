@@ -16,24 +16,16 @@ angular.module('Report')
         }
     }
 })
-.filter("customerNumber", function(){
-    return function(phoneNumber, isdCode){
-        return phoneNumber+isdCode;
-    }
-})
-
-
-                
+    
 
 
 
 .controller('ReportController',
            ['$scope','$rootScope','$location','AuthenticationService',
            function($scope,$rootScope,$location,AuthenticationService){
-               var employeeId=$rootScope.globals.currentUser.employee.employeeId;
-  $scope.getSelectedType=function(){
-               $scope.type=document.getElementById("selectedType").value;
-                  AuthenticationService.supportReport('null',$scope.startDate,$scope.endDate,document.getElementById("selectedType").value,'ALL',function(data){
+  $scope.getSelectedType=function(dateType){
+               $scope.type= dateType;
+                  AuthenticationService.supportReport('null',$scope.startDate,$scope.endDate,dateType,'ALL',function(data){
                       if(!data.error){
                    $scope.myReports=data.serviceSupport;
                    
@@ -44,14 +36,11 @@ angular.module('Report')
                            $scope.reportError = data.errorMessage;
                        }
                        });
-               console.log($scope.type);
-                  };  
+               
+                  }; 
                $scope.issue= {};
-            
-               $scope.getReport=function(){
-                   console.log($scope.issue.startdate);
-                   console.log($scope.issue.enddate);
-          
+  $scope.getReport=function(){
+
                    AuthenticationService.supportReport('null',$scope.issue.startdate,$scope.issue.enddate,document.getElementById("selectedType").value,'ALL',function(data){
                        if(!data.error){
                    $scope.myReports=data.serviceSupport;
@@ -63,24 +52,7 @@ angular.module('Report')
                            $scope.reportError = data.errorMessage;
                        }
                });
-               }                
-               
-    
-             
-               
-             AuthenticationService.supportReport('null',$scope.startDate,$scope.endDate,document.getElementById("selectedType").value,'ALL',function(data){
-                   if(!data.error){
-                   $scope.myReports=data.serviceSupport;
-                   
-                   console.log(data);
-                       }
-                       else{
-                           $scope.reportFailure= data.error;
-                           $scope.reportError = data.errorMessage;
-                       }
-                   
-               });
-                   
+               }              
                
                
            }]);

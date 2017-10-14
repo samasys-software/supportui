@@ -28,7 +28,7 @@ angular.module('Issue')
                     $scope.success = data.error;
                 } else {
                     
-                     $scope.failure = data.error;
+                    $scope.failure = data.error;
                     $scope.error = data.errorMessage;
                     $scope.dataLoading = false;
                 }

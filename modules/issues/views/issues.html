@@ -1,8 +1,7 @@
-  
-<div ng-controller='IssueController'>
+ <div ng-controller='IssueController'>
     
 </div>
-<div class="jumbotron container-fluid" style="text-align: center"><h1><b>Issue Details </b></h1>
+<div class="jumbotron container-fluid" style="text-align: center;"><h1><b>Issue Details </b></h1>
 </div>
 <div class="alert alert-danger alert-dismissable" ng-show="issueFailure == true">
     <a href='#' class="close" data-dismiss="alert" aria-label="close">×</a>
@@ -28,29 +27,32 @@
     <strong>Success!</strong>
     <p>Ticket is Assigned!!</p>
 </div>
-<div>&nbsp;</div>
-<p>Issue Id    : {{issue.issueId}}</p>
-<p>PhoneNumber : {{issue.phoneNumber}}</p>
-    
-<p>Issue :</p>
-<td><div  class="well">{{issue.issue}}</div></td>
-<p>Comments :</p>
-<td><div class="well" ng-bind-html="issue.comments"></div></td>
-<p>Add Comments :</p>
-<p><textarea class="textarea" type="text" id="myText" rows="5" cols="50" ng-model="newMessage" placeholder="Additional Comments"></textarea></p>
+
+<div class="container">
+<div><b> Issue Id</b> : {{issue.issueId}}</div>
+    <div>&nbsp;</div>
+<div><b>PhoneNumber</b> : {{issue.isdCode}}-{{issue.phoneNumber}}</div>
+    <div>&nbsp;</div>
+<p><b> Issue </b></p>
+<td><div  class="well"><b>{{issue.issue}}</b></div></td>
+<p ng-hide="issue.status == 0"><b> Comments </b></p>
+<td ><div class="well" ng-hide="issue.status == 0" ng-bind-html="issue.comments"></div></td>
+<p ng-hide="issue.status == 0"><b> Add Comments </b></p>
+<p ng-hide="issue.status == 0"><textarea class="textarea" type="text" id="myText" rows="5" cols="40" ng-model="newMessage" placeholder="Additional Comments"></textarea></p>
 <div class="row">
 <div class="col-xs-1"></div>
-<div class="col-xs-4">
+<div class="col-xs-6">
      <select class="form-control"  id="selectedStatus" ng-click="getSelectedStatus()" ng-show="issue.status !=0">
-         <option value="1" ng-disabled="issue.status == 1">Assigned</option>
-         <option value="2" >Resolved</option>
+         <option value="1" ng-disabled="issue.status <= 2">Assigned</option>
+         <option value="2" ng-disabled="issue.status == 2">Resolved</option>
          <option value="3">Closed</option>
     </select>
 </div>
-<div class="col-xs-3"></div>
-<div class="col-xs-4">
+<div class="col-xs-1"></div>
+<div class="col-xs-3">
     <button type="submit" class="btn btn-danger button2" ng-click="saveIssue()" ng-show="issue.status !=0" ng-disabled="saveSuccess == false">Save</button>
 </div>
+    </div>
     </div>
 <div class="alert alert-danger alert-dismissable" ng-show="saveFailure == true">
     <a href='#/issue' class="close" data-dismiss="alert" aria-label="close">×</a>
@@ -62,6 +64,4 @@
     <strong>Success!</strong>
     <p>Issue Updated!!</p>
 </div>
-
- 
 
